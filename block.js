@@ -13,3 +13,5 @@ class Block {
         return SHA256(JSON.stringify(this.data) + this.index + this.timestamp).toString();
     }
 }
+
+module.export = Block;
