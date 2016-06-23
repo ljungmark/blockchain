@@ -20,3 +20,15 @@ class Blockchain {
         this.chain.push(newBlock);
     }
 }
+
+let blocksToAdd = 5;
+
+const Docket = new Blockchain();
+
+for (i = 0; i < blocksToAdd; i++) {
+    Docket.addNewBlock(new Block({sender: 'Blockchain', receiver: 'Ljungmark', message: `Block ${Docket.chain.length} has been added to the chain`}));
+}
+
+Docket.chain.forEach((block) => {
+    console.log(block);
+});
