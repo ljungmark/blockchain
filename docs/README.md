@@ -6,12 +6,18 @@ Each block consist of;
 * Some data (in our case a sender, a receiver and a message)
 * A timestamp
 * A hash
+
 ![Block](block.png)
 
 The hash is produced from everything else contained within the block. If any content in the block is changed, the hash is also changed.
 
 ## The chain
 ![Blockchain](blockchain.png)
+
+# Make it immutable
+By keeping a reference to the previous block in the chain, the chain in practice becomes immutable. You cannot change the content in any one chain without causing a chain reaction - alerting the chain of tampering.
+
+![Block](immutable-blockchain.png)
 
 
 # Genesis block
