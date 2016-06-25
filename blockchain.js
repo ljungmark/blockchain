@@ -7,7 +7,7 @@ class Blockchain {
 
     createGenesisBlock() {
         const genesisDate = '2/15/1987';
-        return new Block('Genesis Block', 0, genesisDate);
+        return new Block('Genesis Block', 0, genesisDate, '0');
     }
 
     getLastBlock() {
@@ -15,6 +15,7 @@ class Blockchain {
     }
 
     addNewBlock(newBlock) {
+        newBlock.previousHash = this.getLastBlock().hash;
         newBlock.index = this.getLastBlock().index + 1;
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
