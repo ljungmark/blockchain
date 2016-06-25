@@ -20,6 +20,25 @@ class Blockchain {
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
+
+    isChainValid() {
+        const chain = this.chain;
+
+        for(let i = 0; i < chain.length; i++) {
+            if (chain[i].hash !== chain[i].calculateHash()) {
+                console.log(`Block ${i} has been corrupted`);
+                return false;
+            }
+
+            if (i > 0 && chain[i].previousHash !== chain[i - 1].hash) {
+                console.log(`Block ${i - 1} has been corrupted`);
+                return false;
+            }
+        }
+
+        console.log('The chain is valid');
+        return true;
+    }
 }
 
 let blocksToAdd = 5;
@@ -29,6 +48,8 @@ const Docket = new Blockchain();
 for (i = 0; i < blocksToAdd; i++) {
     Docket.addNewBlock(new Block({sender: 'Blockchain', receiver: 'Ljungmark', message: `Block ${Docket.chain.length} has been added to the chain`}));
 }
+
+console.log(Docket.isChainValid());
 
 Docket.chain.forEach((block) => {
     console.log(block);
