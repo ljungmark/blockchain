@@ -4,8 +4,10 @@
 Each block consist of;
 * An index
 * Some data (in our case a sender, a receiver and a message)
+* A nonce
 * A timestamp
 * A hash
+* A reference to the previous block
 
 ![Block](block.png)
 
@@ -20,7 +22,10 @@ By keeping a reference to the previous block in the chain, the chain in practice
 ![Block](immutable-blockchain.png)
 
 # Proof of Work
-Computing power is cheap and fast, so you could still tamper the chain by updating your block and then recalculating all hashes in the chain. This is solved by 'Proof of Work'. You need to provide proof that you've put in the computational work into a chain. The processing of that is called 'mining'. Achieving 'Proof of Work' is done by creating a hash start with a number of zeros; something referred to as 'difficulty'.
+Computing power is cheap and fast, so you could still tamper the chain by updating your block and then recalculating all hashes in the chain. This is solved by 'Proof of Work'. You need to provide proof that you've done computational work to calculate the hashes and insert them into a chain. As long as the network has more computational power than any other source, the chain is practically uncorruptable.
+
+## Nonce
+The Proof of Work is added to the block as a 'nonce' and the processing of calculating these nonces is called 'mining'. Achieving 'Proof of Work' is done by creating a hash that start with a number of zeros. The amount of zeros at the start of the hash is referred to as 'difficulty'.
 
 ![Block](nonce-block.png)
 
